@@ -8,6 +8,7 @@
 *               practices decisions and one of the four loops.
 */
 
+using System.Numerics;
 using System.Xml.Serialization;
 
 int choice = 0;
@@ -30,6 +31,10 @@ System.Console.WriteLine("5. Quit");
   System.Console.WriteLine("Choose 1 through 5: ");
   choice = Convert.ToInt32(Console.ReadLine());
 
+
+// The number of repeats is uknown prior to the loop starting,
+// a user may get it right and repeat zero times, or wrong and repeat 6 times.
+
   while(choice < 1 || choice > 5 )
 {
     System.Console.WriteLine("choose a number from 1 to 5: ");
@@ -40,9 +45,8 @@ System.Console.WriteLine("5. Quit");
 
 
 
-// The number of repeats is uknown prior to the loop starting,
-// a user may get it right and repeat zero times, or wrong and repeat 6 times.
 
+// Exercise 1 
 
 if(choice == 1 || choice == 4 )
 {
@@ -52,6 +56,9 @@ System.Console.WriteLine("=== Exercise 1: The Grade Checker ===");
 System.Console.Write("score: ");
 score = Convert.ToInt32(Console.ReadLine());
 // int score = 0;
+
+// The number of repeats is uknown prior to the loop starting,
+// a user may get it right and repeat zero times, or wrong and repeat 6 times.
 
     while(score < 0 || score > 100)
         {
@@ -83,10 +90,8 @@ score = Convert.ToInt32(Console.ReadLine());
 
 }
 
+// Exercise 2
 
-// the user came to roll dice, so you need to let them roll before computing whether 
-// to continue or not, thus a do-while loop to execute then process in Post whether to 
-// continue or not.
 
 if(choice == 2 || choice == 4 )
 {
@@ -100,6 +105,10 @@ int winCount = 0;
     // int dice1 = Convert.ToInt32(rng.Next(1, 7));
     //  int dice2 = Convert.ToInt32(rng.Next(1, 7));
     // int RollTotal = dice1 + dice2;
+
+// the user came to roll dice, so you need to let them roll before computing whether 
+// to continue or not, thus a do-while loop to execute then process in Post whether to 
+// continue or not.
 
      do
         {
@@ -140,9 +149,60 @@ int winCount = 0;
 }
 
 
+
+// Exercise 3
+
+
+
 if(choice == 3 || choice == 4 )
 {
     //Exercise 3
+int[] Scores = new int[5];
+
+int ScoreMax = Scores.Max();
+int Total = 0;
+int PassingCount = 0;
+int Highest = int.MinValue;
+
+// double Average = Convert.ToDouble(Total) / Scores.Length;
+
+System.Console.WriteLine("=== Exercise 3: The Score Report ===");
+
+// the position in the array is part of what the loop needs,
+// because the prompt has to say which score this is.
+    for(int i = 0; i < Scores.Length; i++)
+        {
+            System.Console.WriteLine("Score " + (i + 1) + ":" );
+            Scores[i] = Convert.ToInt32(Console.ReadLine());
+
+        }
+
+// Adding up, comparing, and counting needs every value
+// and no position
+
+    foreach(int Grade in Scores)
+        {
+           Total += Grade;
+
+            if(Grade > Highest)
+            {
+                Highest = Grade;
+            }
+
+            if(Grade >= 60)
+            {
+                PassingCount++;
+            }
+
+        }    
+
+double Average = Convert.ToDouble(Total) / Scores.Length;
+
+System.Console.WriteLine("Scores Entered: " + Scores.Length);
+            System.Console.WriteLine("Total: " + Total);
+            System.Console.WriteLine("Average: " + Average);
+            System.Console.WriteLine("Highest: " + Highest);
+
 }
 
 }while(choice != 5);
