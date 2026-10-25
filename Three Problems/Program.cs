@@ -13,6 +13,7 @@ using System.Xml.Serialization;
 int choice = 0;
 int score = 0;
 Random rng = new Random(4000);
+string UserChoice;
 
 // do while: the player came to roll, so that body has to run once before
 // there is anything to ask about.
@@ -48,15 +49,15 @@ if(choice == 1 || choice == 4 )
     //Exercise 1 
 System.Console.WriteLine("=== Exercise 1: The Grade Checker ===");
 
-System.Console.WriteLine("score: ");
+System.Console.Write("score: ");
 score = Convert.ToInt32(Console.ReadLine());
 // int score = 0;
 
-while(score < 0 || score > 100)
+    while(score < 0 || score > 100)
         {
             System.Console.WriteLine("A score must be between 0 and 100");
             score = Convert.ToInt32(Console.ReadLine());
-
+        }
             if(score >= 90)
             {
                 System.Console.WriteLine(score + " Earns an A");
@@ -77,15 +78,65 @@ while(score < 0 || score > 100)
             {
                 System.Console.WriteLine(score + " Earns a F");
             }
-        }
-
+        
+    System.Console.WriteLine(" ");
 
 }
 
 
+// the user came to roll dice, so you need to let them roll before computing whether 
+// to continue or not, thus a do-while loop to execute then process in Post whether to 
+// continue or not.
+
 if(choice == 2 || choice == 4 )
 {
     //Exercise 2 
+
+int rollCount = 0;
+int winCount = 0;
+
+    System.Console.WriteLine("=== Exercise 2: The Dice Table ===");
+
+    // int dice1 = Convert.ToInt32(rng.Next(1, 7));
+    //  int dice2 = Convert.ToInt32(rng.Next(1, 7));
+    // int RollTotal = dice1 + dice2;
+
+     do
+        {
+        rollCount++;
+        
+
+         int dice1 = Convert.ToInt32(rng.Next(1, 7));
+        int dice2 = Convert.ToInt32(rng.Next(1, 7));
+        int RollTotal = dice1 + dice2;  
+        
+
+    System.Console.Write("Roll " + rollCount + ":" + dice1 + " and " + dice2 + ", total " + RollTotal);
+
+    if(dice1 == 1 && dice2 == 1)
+            {
+                System.Console.WriteLine(" Snake eyes");
+            }
+        else if(dice1 == dice2)
+            {
+                System.Console.WriteLine(" Doubles!");
+            }
+        else if(dice1 + dice2 == 11 || dice1 + dice2 == 7)
+            {
+                System.Console.WriteLine(" Winner.");
+                winCount++;
+            }
+     
+
+    System.Console.WriteLine(" Roll again? (y/n)" );
+    UserChoice = Console.ReadLine().ToUpper();
+
+    
+
+        }while( UserChoice == "Y");
+
+        System.Console.WriteLine("You rolled " + rollCount + " times and won " + winCount);
+        System.Console.WriteLine(" ");
 }
 
 
