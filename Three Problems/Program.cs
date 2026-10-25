@@ -11,14 +11,14 @@
 using System.Xml.Serialization;
 
 int choice = 0;
-
+int score = 0;
 Random rng = new Random(4000);
 
 // do while: the player came to roll, so that body has to run once before
 // there is anything to ask about.
 
-// do
-// {
+do
+{
 System.Console.WriteLine("=== CSCI 1250 Lab 6 ===");
 
 System.Console.WriteLine("1. The Grade Checker");
@@ -38,51 +38,62 @@ System.Console.WriteLine("5. Quit");
 }
 
 
-// if(choice == 1 || choice == 4 )
-// {
-//     //Exercise 1 
-// System.Console.WriteLine("=== Exercise 1: The Grade Checker ===");
 
-// int score = Convert.ToInt32(Console.ReadLine()) ; 
-
-//     while(score >= 90 && score < 101)
-//         {
-//             System.Console.WriteLine(score + " earns an A");
-//         }
-
-//     while(score >= 80 && score <= 89)
-//     {
-//         System.Console.WriteLine(score + "earns a B");
-//     }
-
-//     while(score >= 70 && score <= 79)
-//     {
-//       System.Console.WriteLine(score + "earns a C");
-//     }
-
-//     while(score >= 60 && score <= 69)
-//     {
-//       System.Console.WriteLine(score + "earns a D");
-//     }
-
-//     while(score < 60)
-//     {
-//       System.Console.WriteLine(score + "earns a F");
-//     }
-// }
+// The number of repeats is uknown prior to the loop starting,
+// a user may get it right and repeat zero times, or wrong and repeat 6 times.
 
 
-// if(choice == 2 || choice == 4 )
-// {
-//     //Exercise 2 
-// }
+if(choice == 1 || choice == 4 )
+{
+    //Exercise 1 
+System.Console.WriteLine("=== Exercise 1: The Grade Checker ===");
+
+System.Console.WriteLine("score: ");
+score = Convert.ToInt32(Console.ReadLine());
+// int score = 0;
+
+while(score < 0 || score > 100)
+        {
+            System.Console.WriteLine("A score must be between 0 and 100");
+            score = Convert.ToInt32(Console.ReadLine());
+
+            if(score >= 90)
+            {
+                System.Console.WriteLine(score + " Earns an A");
+            }
+            else if(score >= 80)
+            {
+                System.Console.WriteLine(score + " Earns a B");
+            }
+            else if(score >= 70)
+            {
+                System.Console.WriteLine(score + " Earns a C");
+            }
+            else if(score >= 60)
+            {
+                System.Console.WriteLine(score + " Earns a D");
+            }
+            else if(score < 60 && score >= 0)
+            {
+                System.Console.WriteLine(score + " Earns a F");
+            }
+        }
 
 
-// if(choice == 3 || choice == 4 )
-// {
-//     //Exercise 3
-// }
+}
 
-// }while(choice != 5);
+
+if(choice == 2 || choice == 4 )
+{
+    //Exercise 2 
+}
+
+
+if(choice == 3 || choice == 4 )
+{
+    //Exercise 3
+}
+
+}while(choice != 5);
 
 System.Console.WriteLine("Goodbye");
